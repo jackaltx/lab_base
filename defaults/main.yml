@@ -1,0 +1,5 @@
+---
+# defaults file for cyberlab_centos_base
+
+cyberlab_centos_base_codepeer: false
+

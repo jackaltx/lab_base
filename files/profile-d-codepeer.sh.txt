@@ -1,0 +1,5 @@
+# add codepeer into path
+
+# need to do NFS into location
+export PATH="$PATH:/usr/local/codepeer/bin"
+

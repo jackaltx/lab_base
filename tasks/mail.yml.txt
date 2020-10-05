@@ -1,0 +1,7 @@
+---
+
+- name: "Install CodePeer"
+  include: code.peer.yml
+  when: cyberlab_centos_base_codepeer
+
+ 

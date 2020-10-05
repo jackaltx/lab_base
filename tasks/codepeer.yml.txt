@@ -1,0 +1,14 @@
+---
+
+
+- copy: 
+    src: profile-d-codepeer.sh
+    dest: /etc/profile.d/codepeer.sh
+    owner: root
+    group: root
+    mode: 0600
+    backup: yes
+  tags:
+    - sillytag
+ 
+
