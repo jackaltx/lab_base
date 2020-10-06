@@ -1,0 +1,15 @@
+---
+- name: "Install tmux"
+  yum:
+    name: tmux
+    state: latest
+  register: tmux_install
+  become: yes
+  tags:
+    - administrator
+    - developer
+  when: cyberlab_centos_base_tmux
+ 
+- debug: msg="{{ tmux_install }}"
+  when: cyberlab_centos_base_tmux
+  

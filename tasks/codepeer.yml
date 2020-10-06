@@ -1,14 +1,16 @@
 ---
 
 
-- copy: 
+- name: "Install CodePeer"
+  copy: 
     src: profile-d-codepeer.sh
     dest: /etc/profile.d/codepeer.sh
     owner: root
     group: root
     mode: 0600
     backup: yes
+  become: yes
   tags:
     - sillytag
- 
+  when: cyberlab_centos_base_codepeer 
 
