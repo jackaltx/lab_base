@@ -1,6 +1,9 @@
 ---
 
+- include: yumrepos.yml
+- include: yumpacks.yml
+- include: git.yml
 - include: codepeer.yml
 - include: tmux.yml
-
+- include: modulefiles.yml
  
