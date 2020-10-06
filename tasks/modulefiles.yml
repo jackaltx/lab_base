@@ -1,0 +1,16 @@
+---
+
+
+- name: "Install modulefiles profile.d script"
+  copy: 
+    src: profile-d-modulefiles.sh
+    dest: /etc/profile.d/modulefiles.sh
+    owner: root
+    group: root
+    mode: 0600
+    backup: yes
+  become: yes
+  tags:
+    - sillytag
+  when: cyberlab_centos_base_modulefiles 
+

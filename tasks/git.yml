@@ -1,0 +1,16 @@
+---
+
+
+- name: "Install git 2.18 profile.d script"
+  copy: 
+    src: profile-d-git-scl.sh
+    dest: /etc/profile.d/git-scl.sh
+    owner: root
+    group: root
+    mode: 0600
+    backup: yes
+  become: yes
+  tags:
+    - sillytag
+  when: cyberlab_centos_base_git 
+

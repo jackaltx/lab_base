@@ -1,0 +1,14 @@
+---
+  - name: "Install needed yum repos"
+    tasks:
+      - name: yum packages needed for codepeer 
+        yum:
+          name: centos-release-scl epel 
+          state: latest
+        register: yum_repos
+        become: true
+        when: cyberlab_centos_repos
+        
+      - debug: msg="{{ yum_repos }}"
+        when: cyberlab_centos_repos
+
