@@ -1,0 +1,9 @@
+- hosts: 127.0.0.1
+  connection: local
+  tags:
+    - banner-test
+  vars:
+    - cyberlab_centos_banner: True
+  roles:
+    - ../..
+

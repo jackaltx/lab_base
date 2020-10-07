@@ -1,11 +1,2 @@
 ---
-
-
-
 # vars file for cyberlab_centos_base
-  cyberlab_centos_base_codepeer = false 
-  cyberlab_centos_base_git = false
-  cyberlab_centos_base_modulefiles = false 
-  cyberlab_centos_repos = false
-  cyberlab_centos_base_tmux = false
-  cyberlab_centos_base_packages_for_codepeer = false
