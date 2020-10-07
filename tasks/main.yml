@@ -1,14 +1,20 @@
 ---
 
-# not working
-# - include: yumrepos.yml
+- include: repos.yml
+  when: cyberlab_centos_repos
 
 - include: yumpacks.yml
   when: cyberlab_centos_base_packages_for_codepeer
 
 - include: git.yml
+  when: cyberlab_centos_base_git
+
 - include: codepeer.yml
+  when: cyberlab_centos_base_codepeer 
+
 - include: tmux.yml
+  when: cyberlab_centos_base_tmux
+
 - include: modulefiles.yml
  
 - include: banner.yml

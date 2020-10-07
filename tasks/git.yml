@@ -1,7 +1,12 @@
 ---
+#- name: "Test if SCL installed"
+#  command: rpm -q centos-release-scl
+#  register: scl_check
+#  ignore_warnings: True
 
+#- debug: msg="{{ scl_check }}"
 
-- name: "Install git 2.18 profile.d script"
+- name: "Install git 2.18 profile.d script for SCL"
   copy: 
     src: profile-d-git-scl.sh
     dest: /etc/profile.d/git-scl.sh
@@ -11,6 +16,6 @@
     backup: yes
   become: yes
   tags:
-    - sillytag
-  when: cyberlab_centos_base_git 
-
+    - scl
+  #when: scl_check.rc == 1
+  

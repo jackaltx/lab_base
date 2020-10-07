@@ -6,8 +6,6 @@
     state: latest
   register: yum_packages
   become: true
-  when: cyberlab_centos_base_packages_for_codepeer
         
-  #- debug: msg="{{ yum_packages }}"
-  #when: cyberlab_centos_base_packages_for_codepeer
+- debug: msg="{{ yum_packages }}"
 

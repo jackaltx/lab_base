@@ -1,14 +1,22 @@
 ---
-  - name: "Install needed yum repos"
-    tasks:
-      - name: yum packages needed for codepeer 
-        yum:
-          name: centos-release-scl epel 
-          state: latest
-        register: yum_repos
-        become: true
-        when: cyberlab_centos_repos
+- name: "Install EPEL yum repos"
+  yum:
+    name: 
+      - epel-release
+    state: latest
+  register: epel_repo
+  become: true
         
-      - debug: msg="{{ yum_repos }}"
-        when: cyberlab_centos_repos
+- debug: msg="{{ epel_repo }}"
 
+- name: "Install SCL yum repos"
+  yum:
+    name: 
+      - centos-release-scl 
+    state: latest
+  register: scll_repo
+  become: true
+  when: ansible_distribution_major_version != "8"
+
+- debug: msg="{{ scl_repo}}"
+  when: scl_repo is defined

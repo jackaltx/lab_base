@@ -47,6 +47,7 @@ banner_content: |
   {{ key }}{{ value }}
   {% endfor %}
   {% endfor %}
+
   Yours,
   {{ banner_sysadmins_signature }}
   email: {{ banner_sysadmins_email }}

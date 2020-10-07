@@ -4,6 +4,9 @@
     - banner-test
   vars:
     - cyberlab_centos_banner: True
+    - cyberlab_centos_repos: True
+    - cyberlab_centos_base_git: False
+    - cyberlab_centos_base_tmux: True
   roles:
     - ../..
 

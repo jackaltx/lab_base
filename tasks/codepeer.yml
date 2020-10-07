@@ -1,6 +1,4 @@
 ---
-
-
 - name: "Install CodePeer"
   copy: 
     src: profile-d-codepeer.sh
@@ -12,5 +10,4 @@
   become: yes
   tags:
     - sillytag
-  when: cyberlab_centos_base_codepeer 
 
