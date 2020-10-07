@@ -1,0 +1,29 @@
+==============================
+
+FQDN:    : "{{ ansible_fqdn }}"
+Distro:  : "{{ ansible_distribution }} {{ ansible_distribution_version }} {{ ansible_distribution_release }}"
+Virtual: : "{{ 'YES' if ansible_virtualization_role == 'guest' else 'NO' }}"
+CPUs:    : "{{ ansible_processor_vcpus }}"
+RAM:     : "{{ (ansible_memtotal_mb / 1000) | round(1) }}GB"
+Collected: "{{ ansible_date_time.iso8601 }}"
+
+
+Module Variables ("vars"):
+--------------------------------
+{{ vars | to_nice_json }} 
+
+Environment Variables ("environment"):
+--------------------------------
+{{ environment | to_nice_json }} 
+
+GROUP NAMES Variables ("group_names"):
+--------------------------------
+{{ group_names | to_nice_json }}
+
+GROUPS Variables ("groups"):
+--------------------------------
+{{ groups | to_nice_json }}
+
+HOST Variables ("hostvars"):
+--------------------------------
+{{ hostvars | to_nice_json }} 

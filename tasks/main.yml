@@ -1,5 +1,7 @@
 ---
 
+- include: var_dump.yml
+
 - include: check_node.yml
 
 - vars:
