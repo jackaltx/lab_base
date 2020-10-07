@@ -1,13 +1,14 @@
 ---
 
-- include: yum_baseline.yml
+- include: check_node.yml
+
+- vars:
+    local_packages: "{{ baseline_packages }}"
+  include: yum_install.yml
   when: cyberlab_centos_baseline_packages
  
 - include: repos.yml
   when: cyberlab_centos_repos
-
-- include: yumpacks.yml
-  when: cyberlab_centos_base_packages_for_codepeer
 
 - include: git.yml
   when: cyberlab_centos_base_git
@@ -15,6 +16,7 @@
 - include: codepeer.yml
   when: cyberlab_centos_base_codepeer 
 
+# consider putting this in the baseline packages, for now it serves as an example
 - include: tmux.yml
   when: cyberlab_centos_base_tmux
 

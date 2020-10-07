@@ -1,5 +1,16 @@
 ---
-- name: "Install CodePeer"
+- name: "Install packages required for Codepeer"
+  vars:
+    local_packages: 
+      - rh-git218 
+      - gcc gcc-devel 
+      - environment-modules
+  include: yum_install.yml
+  when: cyberlab_centos_baseline_packages
+
+# Put the NFS mounts to the modules and the binaries here
+
+- name: "Install CodePeer Environment Profile"
   copy: 
     src: profile-d-codepeer.sh
     dest: /etc/profile.d/codepeer.sh
@@ -11,3 +22,4 @@
   tags:
     - sillytag
 
+ 

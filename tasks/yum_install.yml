@@ -1,7 +1,12 @@
 ---
-- name: Install baseline packages (Version 6 or 7)
+
+- name: Packages to be installed 
+  debug:
+    msg: "Packages to be installed {{ local_packages }}"
+
+- name: Install  packages (Version 6 or 7)
   yum: 
-    name: "{{ baseline_packages }}"
+    name: "{{ local_packages }}"
     state: latest
     skip_broken: yes
     update_cache: yes
@@ -13,7 +18,7 @@
 
 - name: Install baseline packages (Version 8)
   dnf: 
-    name: "{{ baseline_packages }}"
+    name: "{{ local_packages }}"
     state: latest
     skip_broken: yes
     update_cache: yes

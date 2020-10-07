@@ -1,0 +1,5 @@
+---
+- name: Throw exception on non RedHat flavored systems
+  fail: 
+    msg: "This only works for RedHat Distro's.  THis node is ansible_facts['os_family'] "
+  when: ansible_facts['os_family'] != "RedHat"
