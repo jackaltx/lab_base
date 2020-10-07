@@ -1,0 +1,29 @@
+---
+- name: Install baseline packages (Version 6 or 7)
+  yum: 
+    name: "{{ baseline_packages }}"
+    state: latest
+    skip_broken: yes
+    update_cache: yes
+  ignore_errors: yes
+  register: yum_cmd_out
+  when:
+    - (ansible_facts['distribution_major_version'] == '6') or
+      (ansible_facts['distribution_major_version'] == '7')
+
+- name: Install baseline packages (Version 8)
+  dnf: 
+    name: "{{ baseline_packages }}"
+    state: latest
+    skip_broken: yes
+    update_cache: yes
+  ignore_errors: yes
+  register: yum_cmd_out
+  when:
+    - ansible_facts['distribution_major_version'] == '8'
+
+- name: Print errors if yum failed
+  debug:
+    msg: "{{ yum_cmd_out }}"
+  when: yum_cmd_out
+

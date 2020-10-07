@@ -1,5 +1,8 @@
 ---
 
+- include: yum_baseline.yml
+  when: cyberlab_centos_baseline_packages
+ 
 - include: repos.yml
   when: cyberlab_centos_repos
 
@@ -16,6 +19,11 @@
   when: cyberlab_centos_base_tmux
 
 - include: modulefiles.yml
- 
+
 - include: banner.yml
   when: cyberlab_centos_banner 
+
+- include: yum_update.yml
+  when: cyberlab_centos_update 
+ 
+

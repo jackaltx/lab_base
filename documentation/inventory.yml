@@ -1,0 +1,29 @@
+---
+all:
+  hosts:
+    worker1:
+      host_var:  value
+    server1:
+
+
+  vars:
+    group_all_vars:  value
+  other_group:
+    children:
+      freeipa:
+        hosts: hostname_2
+        var:
+          freeiap_var: value
+      email:
+        hosts: hostname_1
+      dns:
+      worker:
+      scl:
+      ngnx:
+        vars:
+         nginx_http_port:   80
+         nginx_https_port: 443
+      apache:
+      mysql:
+    var:
+     children_var: value

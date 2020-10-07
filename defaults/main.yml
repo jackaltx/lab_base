@@ -1,6 +1,9 @@
 ---
 # defaults file for cyberlab_centos_base
 
+#####################################################
+# call a task.
+
 cyberlab_centos_base_codepeer: false 
 cyberlab_centos_base_git: false 
 cyberlab_centos_base_modulefiles: false 
@@ -8,6 +11,19 @@ cyberlab_centos_repos: false
 cyberlab_centos_base_tmux: false 
 cyberlab_centos_base_packages_for_codepeer: false 
 cyberlab_centos_banner: false
+cyberlab_centos_update: false
+cyberlab_centos_baseline_packages: false
+
+#####################################################
+#  Baseline RPM packages to install for ALL
+
+baseline_packages:
+  - yum-utils
+  - tree
+  - htop
+
+#####################################################
+#  Banner Defaults
 
 banner_src:  "banner.j2" 
 banner_dest: "/etc/motd"
