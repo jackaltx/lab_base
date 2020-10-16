@@ -1,18 +1,20 @@
 ---
-# defaults file for cyberlab_centos_base
+# defaults file for lab_base_base
 
 #####################################################
 # call a task.
 
-cyberlab_centos_base_codepeer: false 
-cyberlab_centos_base_git: false 
-cyberlab_centos_base_modulefiles: false 
-cyberlab_centos_repos: false 
-cyberlab_centos_base_tmux: false 
-cyberlab_centos_base_packages_for_codepeer: false 
-cyberlab_centos_banner: false
-cyberlab_centos_update: false
-cyberlab_centos_baseline_packages: false
+lab_update: false
+lab_baseline_packages: false
+lab_save_facts: false
+
+lab_base_codepeer: false 
+lab_base_git: false 
+lab_base_modulefiles: false 
+lab_base_repos: false 
+lab_base_tmux: false 
+lab_base_banner: false
+lab_base_update: false
 
 #####################################################
 #  Baseline RPM packages to install for ALL

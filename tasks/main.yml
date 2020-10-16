@@ -1,33 +1,31 @@
 ---
 
 - include: var_dump.yml
+  when: lab_save_facts
 
 - include: check_node.yml
 
+- include: yum_update.yml
+  when: lab_update 
+ 
 - vars:
     local_packages: "{{ baseline_packages }}"
   include: yum_install.yml
-  when: cyberlab_centos_baseline_packages
+  when: lab_baseline_packages
  
 - include: repos.yml
-  when: cyberlab_centos_repos
+  when: lab_base_repos
 
 - include: git.yml
-  when: cyberlab_centos_base_git
-
-- include: codepeer.yml
-  when: cyberlab_centos_base_codepeer 
+  when: lab_base_base_git
 
 # consider putting this in the baseline packages, for now it serves as an example
 - include: tmux.yml
-  when: cyberlab_centos_base_tmux
+  when: lab_base_tmux
 
 - include: modulefiles.yml
 
 - include: banner.yml
-  when: cyberlab_centos_banner 
+  when: lab_base_banner 
 
-- include: yum_update.yml
-  when: cyberlab_centos_update 
- 
 
