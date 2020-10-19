@@ -1,4 +1,7 @@
 ---
+
+- include_vars: banner.yml
+
 - name: add motd template to server
   become: yes
   template:

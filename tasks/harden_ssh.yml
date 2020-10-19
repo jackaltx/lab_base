@@ -1,0 +1,25 @@
+---
+
+- include_vars: harden_ssh.yml
+
+- name: get openssh-version
+  shell: ssh -V 2>&1 | sed -r 's/.*_([0-9]*\.[0-9]).*/\1/g'
+  args:
+    executable: /bin/sh
+  changed_when: false
+  register: openssh_version
+  check_mode: no
+
+- include_tasks: harden_ssh/crypto.yml
+
+- include_tasks: harden_ssh/sshd.yml
+  when: sshd_hardening
+
+- include_tasks: harden_ssh/ssh.yml
+  when: ssh_hardening
+
+- include_tasks: harden_ssh/public-keys.yml
+  when:
+    - openssh_keys
+    - public_keys != ""
+

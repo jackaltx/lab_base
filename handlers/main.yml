@@ -1,4 +1,9 @@
 ---
+# handlers file 
 
-# none for now
+- name: "(Handler: All Linux/Unix OSs) Restart sshd"
+  service:
+    name: "{{ sshd_service }}"
+    state: restarted
 
+ 

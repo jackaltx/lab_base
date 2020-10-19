@@ -12,5 +12,5 @@
   become: yes
   tags:
     - sillytag
-  when: cyberlab_centos_base_modulefiles 
+  when: lab_base_modulefiles 
 

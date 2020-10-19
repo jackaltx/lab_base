@@ -1,0 +1,142 @@
+---
+# Enable hardening sshd
+sshd_hardening: true
+
+# Enable hardening ssh
+ssh_hardening: false
+
+# Enable public keys transfer
+openssh_keys: false
+
+# Transfert ssh public on the target host
+public_keys: []
+# - key1
+# - key2
+# - key3
+
+### OPENSSH-SERVER ###
+
+# Define listening sshd port
+sshd_port: "22"
+
+# Use only ssh protocol version 2
+sshd_protocol_version: "2"
+
+# Listening on specific address
+sshd_listening_address:
+  - 0.0.0.0
+
+# Check host key when sshd start
+sshd_host_key_files: []
+
+# Deny root login
+sshd_root_login: "no"
+
+# Disable kerberos
+sshd_kerberos_support: false
+
+# Disable gssapi authentification
+sshd_gssapi_support: false
+
+# Disable x11 forwarding
+sshd_x11_forwarding: "no"
+
+# Disable agent forwarding
+sshd_agent_forwarding: "no"
+
+# Disable tcp forwarding
+sshd_tcp_forwarding: "no"
+
+# Disconnect idle sessions
+sshd_client_alive_intervale: "300"
+sshd_client_alive_countMax: "2"
+
+# Set banner
+sshd_banner: "/etc/issue.net"
+
+# Use pam authentification
+sshd_pam: "yes"
+
+# Use  privilege separation
+sshd_privilege_separation_59: "sandbox"
+sshd_privilege_separation_53: "yes"
+
+# Password authentification should be disable
+sshd_password_authentification: "yes"
+
+# Limit max connexion non-authentified concurency and max try
+sshd_max_auth_tries: "5"
+sshd_max_startups: "10:30:100"
+
+### OPENSSH-CLIENT ###
+
+# Definie default ssh port
+ssh_port: "22"
+
+# Disable roaming
+ssh_roaming: "no"
+
+# Ssh must be use pub key
+ssh_password_authentification: "no"
+
+### CRYPTOGRAPHY ###
+openssh_ciphers: []
+openssh_macs: []
+openssh_kexalgorithms: []
+
+# Cipher do not use sha1
+ciphers_openssh_66:
+  - chacha20-poly1305@openssh.com
+  - aes256-gcm@openssh.com
+  - aes128-gcm@openssh.com
+  - aes256-ctr
+  - aes192-ctr
+  - aes128-ctr
+
+ciphers_openssh_53:
+  - aes256-ctr
+  - aes192-ctr
+  - aes128-ctr
+
+# Message authentication code
+macs_openssh_76:
+  - hmac-sha2-512-etm@openssh.com
+  - hmac-sha2-256-etm@openssh.com
+  - umac-128-etm@openssh.com
+  - hmac-sha2-512
+  - hmac-sha2-256
+
+macs_openssh_66:
+  - hmac-sha2-512-etm@openssh.com
+  - hmac-sha2-256-etm@openssh.com
+  - umac-128-etm@openssh.com
+  - hmac-sha2-512
+  - hmac-sha2-256
+
+macs_openssh_59:
+  - hmac-sha2-512
+  - hmac-sha2-256
+
+macs_openssh_53:
+  - hmac-sha1
+
+# Key exchange algorithms
+kexalgorithms_openssh_66:
+  - curve25519-sha256@libssh.org
+  - diffie-hellman-group-exchange-sha256
+
+kexalgorithms_openssh_53:
+  - diffie-hellman-group-exchange-sha256
+
+#########################################################
+# Service File Controls
+
+sshd_service: sshd
+sshd_config: /etc/ssh/sshd_config
+sshd_config_owner: root
+sshd_config_group: root
+
+ssh_config: /etc/ssh/ssh_config
+ssh_user_directory: /root/.ssh
+ssh_user_keys_file: /root/.ssh/authorized_keys
+

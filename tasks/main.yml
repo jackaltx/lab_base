@@ -17,7 +17,7 @@
   when: lab_base_repos
 
 - include: git.yml
-  when: lab_base_base_git
+  when: lab_base_git
 
 # consider putting this in the baseline packages, for now it serves as an example
 - include: tmux.yml
@@ -26,6 +26,8 @@
 - include: modulefiles.yml
 
 - include: banner.yml
-  when: lab_base_banner 
+  when: lab_banner 
 
+- include: harden_ssh.yml
+  when: lab_harden_ssh
 

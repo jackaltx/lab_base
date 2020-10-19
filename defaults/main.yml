@@ -7,13 +7,14 @@
 lab_update: false
 lab_baseline_packages: false
 lab_save_facts: false
+lab_banner: false
+lab_harden_ssh: false
 
 lab_base_codepeer: false 
 lab_base_git: false 
 lab_base_modulefiles: false 
 lab_base_repos: false 
 lab_base_tmux: false 
-lab_base_banner: false
 lab_base_update: false
 
 #####################################################
@@ -24,50 +25,4 @@ baseline_packages:
   - tree
   - htop
 
-#####################################################
-#  Banner Defaults
 
-banner_src:  "banner.j2" 
-banner_dest: "/etc/motd"
-
-banner_info:
-  - " FQDN:    ": "{{ ansible_fqdn }}"
-  - " Distro:  ": "{{ ansible_distribution }} {{ ansible_distribution_version }} {{ ansible_distribution_release }}"
-  - " Virtual: ": "{{ 'YES' if ansible_virtualization_role == 'guest' else 'NO' }}\n"
-  - " CPUs:    ": "{{ ansible_processor_vcpus }}"
-  - " RAM:     ": "{{ (ansible_memtotal_mb / 1000) | round(1) }}GB"
-
-banner_sysadmins_signature:  "The Man"
-banner_sysadmins_email: theman@i_am.com
-
-banner_content: |
-  --------------------------------------------------------------------------
-                      This system is managed by Ansible
-  --------------------------------------------------------------------------
-  This is {{ ansible_fqdn }} running {{ ansible_distribution }}.
-
-  This system is for the use of authorized users only. 
-  Individuals using this computer system without
-  authority, or in excess of their authority, are subject
-  to having all of their activities on this system
-  monitored and recorded by system personnel.  In the
-  course of monitoring individuals improperly using this
-  system, or in the course of system maintenance, the
-  activities of authorized users may also be monitored. 
-  Anyone using this system expressly consents to such
-  monitoring and is advised that if such monitoring
-  reveals possible evidence of criminal activity, system
-  personnel may provide the evidence of such monitoring
-  to law enforcement officials.
-  
-  {% for item in banner_info %}
-  {% for key, value in item.items() | list %}
-  {{ key }}{{ value }}
-  {% endfor %}
-  {% endfor %}
-
-  Yours,
-  {{ banner_sysadmins_signature }}
-  email: {{ banner_sysadmins_email }}
-  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Last ansible run: {{ ansible_date_time.iso8601 }}
