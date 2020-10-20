@@ -9,8 +9,8 @@ lab_baseline_packages: false
 lab_save_facts: false
 lab_banner: false
 lab_harden_ssh: false
+lab_pne: false
 
-lab_base_codepeer: false 
 lab_base_git: false 
 lab_base_modulefiles: false 
 lab_base_repos: false 
@@ -23,6 +23,6 @@ lab_base_update: false
 baseline_packages:
   - yum-utils
   - tree
-  - htop
-
+  - wget
+  - bind-utils
 

@@ -1,9 +1,31 @@
 ---
 # handlers file 
 
+########################################################################3
+# SSHD
+
 - name: "(Handler: All Linux/Unix OSs) Restart sshd"
   service:
     name: "{{ sshd_service }}"
     state: restarted
 
- 
+########################################################################3
+# Prometheus Node Exporter
+
+- name: restart node_exporter
+  systemd:
+    name: node_exporter
+    state: restarted 
+
+
+
+
+- name: reload systemd
+  systemd:
+    name: systemd
+    daemon_reload: true
+
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    daemon_reload: reloaded

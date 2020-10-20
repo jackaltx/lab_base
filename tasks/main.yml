@@ -31,3 +31,7 @@
 - include: harden_ssh.yml
   when: lab_harden_ssh
 
+- include: node_exporter.yml
+  when: lab_pne
+
+

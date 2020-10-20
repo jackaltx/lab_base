@@ -1,0 +1,98 @@
+---
+
+##########################################################################
+# Install prometheus node_exporter (PNE)  for Centos 7 (and 8?)
+
+- include_vars: node_exporter.yml
+
+- name: Create the Node Exporter group
+  group:
+    name: "{{ pne_service_group }}"
+    state: present
+    system: true
+
+- name: Create the Node Exporter user
+  user:
+    name: "{{ pne_service_username }}"
+    groups: "{{ pne_service_group }}"
+    append: true
+    shell: /bin/bash
+  when: pne_manage_user
+
+#
+# Install Prometheus Node Exporter
+#
+- name: Check if the version of Node Exporter already exists
+  stat:
+    path: "/opt/node_exporter-{{ pne_version }}.linux-amd64"
+  register: pne_install_path
+
+- name: Download Node Exporter
+  get_url:
+    url: "{{ pne_download_url }}"
+    dest: "/tmp/node_exporter-{{ pne_version }}.tar.gz"
+  when: not pne_install_path.stat.exists
+
+- name: Extract Node Exporter into the install directory
+  unarchive:
+    src: "/tmp/node_exporter-{{ pne_version }}.tar.gz"
+    dest: "/opt/"
+    copy: false
+    owner: "{{ pne_service_username }}"
+    group: "{{ pne_service_group }}"
+  when: not pne_install_path.stat.exists
+
+- name: Create a symlink for /opt/node_exporter
+  file:
+    src: "/opt/node_exporter-{{ pne_version }}.linux-amd64"
+    dest: /opt/node_exporter
+    owner: "{{ pne_service_username }}"
+    group: "{{ pne_service_group }}"
+    state: link
+  when: not pne_install_path.stat.exists
+
+
+- name: Create /etc/prometheus directory if it does not exist
+  file:
+    path: /etc/prometheus
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
+- name: Create Prometheus Node Exporter configuration file
+  template:
+    src: node_exporter.j2
+    dest: /etc/prometheus/prometheus.yml
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+
+- name: Copy the Node Exporter systemd service file
+  template:
+    src: node_exporter.service.j2
+    dest: /etc/systemd/system/node_exporter.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload systemd
+    - restart node_exporter
+
+- name: permit traffic in default zone for node_exporter
+  ansible.posix.firewalld:
+    port: 9100/tcp
+    permanent: yes
+    state: enabled
+  notify:
+    - reload service firewalld
+ 
+- name: Ensure Node Exporter is started and enabled on boot
+  service:
+    name: node_exporter
+    state: started
+    enabled: true
+

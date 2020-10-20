@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus Node Exporter Server:
+After=network.target
+
+[Service]
+Type=simple
+User={{ pne_service_username }}
+Group={{ pne_service_group }}
+ExecStart=/opt/node_exporter/node_exporter {% for enabled in pne_enabled_collectors %}--collector.{{ enabled }} {% endfor %} {% for disabled in pne_disabled_collectors %}--no-collector.{{ disabled }} {% endfor %} {% for flag, flag_value in pne_config_flags.items() %}--{{ flag }}={{ flag_value }} {% endfor %}
+
+SyslogIdentifier=pne
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

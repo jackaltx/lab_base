@@ -1,0 +1,27 @@
+---
+
+##################################################################
+# Prometheus Node Exporter
+#
+# check back from time to time, but I know this one works
+
+pne_version: 1.0.1
+
+# download the tarbasll
+pne_download_url: https://github.com/prometheus/node_exporter/releases/download/v{{ pne_version }}/node_exporter-{{ pne_version }}.linux-amd64.tar.gz
+
+# when would I not want to do this
+pne_manage_user: true
+
+pne_service_username: prometheus
+pne_service_group: prometheus
+
+pne_enabled_collectors: []
+pne_disabled_collectors: []
+
+pne_config_flags:
+  'web.listen-address': '0.0.0.0:9100'
+  'log.level': 'info'
+
+
+
