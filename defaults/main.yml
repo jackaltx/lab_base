@@ -25,4 +25,4 @@ baseline_packages:
   - tree
   - wget
   - bind-utils
-
+  - git
