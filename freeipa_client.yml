@@ -1,0 +1,14 @@
+---
+# defaults file for ansible-freeipa-client
+freeipaclient_force_join: false
+freeipaclient_enable_ntp: true
+freeipaclient_all_ip_addresses: "{{ true if ansible_distribution_release != 'trusty' else false }}"
+freeipaclient_ip_address: false
+freeipaclient_enable_dns_updates: true
+
+# https://github.com/CTL-Fed-Security/ansible-freeipa-client
+
+freeipaclient_install_command: '/sbin/ipa-client-install'
+freeipaclient_packages:
+ - ipa-client
+ - dbus-python
