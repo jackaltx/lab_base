@@ -17,12 +17,13 @@
 -->
 
 
-<!-- PROJECT LOGO -->
+<!-- PROJECT LOGO
 <br />
 <p align="center">
   <a href="https://github.com/jackltx/lab_base">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
+ -->
 
   <h3 align="center">Ansible Lab Baseline</h3>
 
@@ -77,10 +78,11 @@ For servers/services you will need to the lab_server repo and a same "driver" is
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+This is an ansibl project
+
 * npm
 ```sh
-npm install npm@latest -g
+pip install ansible
 ```
 
 ### Installation
