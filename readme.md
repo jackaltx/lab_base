@@ -7,13 +7,14 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
+<!--
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+-->
 
 
 <!-- PROJECT LOGO -->
@@ -61,25 +62,18 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
-
-
-### Built With
-
-* []()
-* []()
-* []()
+This is an experiment using ansible to provision a standalone small computer lab for cyber security testing. Eventially I will tie this into a foreman-like orchestrators to provision images that are appropriate for different industries (e.g., PCI, HIPPA, ...).  For now the 
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+For servers/services you will need to the lab_server repo and a same "driver" is in my lab_driver repo.
+
+
 
 ### Prerequisites
 
@@ -95,17 +89,20 @@ npm install npm@latest -g
 ```sh
 git clone https://github.com/jackaltx/lab_base.git
 ```
-2. Install NPM packages
+2. Clone the lib_server repo
 ```sh
-npm install
+git clone https://github.com/jackaltx/lab_base.git
 ```
-
+2. Clone the lib_driver repo (optional)
+```sh
+git clone https://github.com/jackaltx/lab_driver.git
+```
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Not done
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
