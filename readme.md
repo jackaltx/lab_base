@@ -67,7 +67,7 @@
 
 This is an experiment using ansible to provision a standalone small computer lab for cyber security testing. Eventially I will tie this into a foreman-like orchestrators to provision images that are appropriate for different industries (e.g., PCI, HIPPA, ...).  For now the 
 
-
+This version is only for Centos 7 and 8.  Not sure this will ever move off of that path.
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -80,9 +80,16 @@ For servers/services you will need to the lab_server repo and a same "driver" is
 
 This is an ansibl project
 
-* npm
+* python (2 or 3, but I will keep to 
+```sh
+yum install python3 -y
+```
+* ansible  (pip or rpm depending on your needs)
 ```sh
 pip install ansible
+```
+```sh
+yum install ansible -y
 ```
 
 ### Installation
