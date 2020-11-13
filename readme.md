@@ -69,6 +69,11 @@ This is an experiment using ansible to provision a standalone small computer lab
 
 This version is only for Centos 7 and 8.  Not sure this will ever move off of that path.
 
+What I need help with
+* automated testing
+* peer review/testing
+* a sensible problem space
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -78,7 +83,7 @@ For servers/services you will need to the lab_server repo and a same "driver" is
 
 ### Prerequisites
 
-This is an ansibl project
+This is an "ansible only" project.
 
 * python (2 or 3, but I will keep to 
 ```sh
